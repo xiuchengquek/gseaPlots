@@ -103,8 +103,8 @@ if __name__ == '__main__':
     chip_file = gseaParsers.parse_chip_file(args.chipfile)
 
     rl = rankedList(rnk_list, chip_file)
-    rl.add_gene_set(geneset.values()[0], geneset.keys()[0])
-    rl.match_gene_set(geneset.keys()[0])
+    rl.add_gene_set(list(geneset.values())[0], list(geneset.keys())[0])
+    rl.match_gene_set(list(geneset.keys()[0]))
 
 
 
