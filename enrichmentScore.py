@@ -46,8 +46,8 @@ class rankedList:
         for x in rnk_list:
             genes = x[0]
             logFC = x[1]
-            if genes in gene_chip:
-                self.rnk_list.append((gene_chip[genes], logFC) )
+            corrected_name = gene_chip.get(genes, genes)
+            self.rnk_list.append((corrected_name, logFC) )
 
         self.rnk_list.sort(key= lambda x : x[1], reverse=True)
 
