@@ -49,7 +49,7 @@ class rankedList:
             if genes in gene_chip:
                 self.rnk_list.append((gene_chip[genes], logFC) )
 
-        self.rnk_list.sort(key= lambda x : float(x[1]), reverse=True)
+        self.rnk_list.sort(key= lambda x : x[1], reverse=True)
 
     def add_gene_set(self, genes_list, id ):
         self.genes_set[id] = genes_list
