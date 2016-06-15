@@ -109,6 +109,7 @@ if __name__ == '__main__':
     rl = rankedList(rnk_list, chip_file)
     rl.add_gene_set(gene_set_values, gene_set_id)
     rl.match_gene_set(gene_set_id)
+    print(rl.enrichment_score[gene_set_id])
 
 
 
