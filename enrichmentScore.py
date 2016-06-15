@@ -76,7 +76,10 @@ class rankedList:
                 sum_hit += ( abs(fold_change) / total_rank_score )
 
             rolling_enrichment = sum_hit - sum_penalty
-            self.enrichment_score[id].append(rolling_enrichment)
+            self.enrichment_score[id].append((gene_id, rolling_enrichment))
+
+
+
 
     def _calculate_sum_rank(self, genes_set, rnk_list):
         rnk_dict = {x[0] : x[1] for x in rnk_list}
