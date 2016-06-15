@@ -99,12 +99,16 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     rnk_list = gseaParsers.parse_rnk_file(args.rnk)
-    geneset = gseaParsers.parse_single_gene_sets(args.geneset)
+    gene_set = gseaParsers.parse_single_gene_sets(args.geneset)
     chip_file = gseaParsers.parse_chip_file(args.chipfile)
 
+    gene_set_id = list(gene_set.keys())[0]
+    gene_set_values = gene_set[gene_set_id]
+
+
     rl = rankedList(rnk_list, chip_file)
-    rl.add_gene_set(list(geneset.values())[0], list(geneset.keys())[0])
-    rl.match_gene_set(list(geneset.keys()[0]))
+    rl.add_gene_set(gene_set_values, gene_set_id)
+    rl.match_gene_set(gene_set_id)
 
 
 
