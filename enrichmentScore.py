@@ -79,7 +79,16 @@ class rankedList:
             self.enrichment_score[id].append((gene_id, rolling_enrichment))
 
 
-
+    def write_enrichment_to_file(self, gene_set, file):
+        if gene_set not in self.enrichment_score:
+            pass
+        else :
+            with open(file, '\w+') as f :
+                enrichment = self.enrichment_score[gene_set]
+                for x in enrichment:
+                    gene_id = x[0]
+                    enrichment_value = x[1]
+                    f.write("%s\t%s\n" % (gene_id, enrichment_value))
 
     def _calculate_sum_rank(self, genes_set, rnk_list):
         rnk_dict = {x[0] : x[1] for x in rnk_list}
@@ -105,6 +114,9 @@ if __name__ == '__main__':
     gene_set = gseaParsers.parse_single_gene_sets(args.geneset)
     chip_file = gseaParsers.parse_chip_file(args.chipfile)
 
+    output_file = args.output
+
+
     gene_set_id = list(gene_set.keys())[0]
     gene_set_values = gene_set[gene_set_id]
 
@@ -112,7 +124,7 @@ if __name__ == '__main__':
     rl = rankedList(rnk_list, chip_file)
     rl.add_gene_set(gene_set_values, gene_set_id)
     rl.match_gene_set(gene_set_id)
-    print(rl.enrichment_score[gene_set_id])
+    rl.write_enrichment_to_file(gene_set_id, output_file)
 
 
 
