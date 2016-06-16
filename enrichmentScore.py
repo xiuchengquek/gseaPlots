@@ -83,7 +83,7 @@ class rankedList:
         if gene_set not in self.enrichment_score:
             pass
         else :
-            with open(file, '\w+') as f :
+            with open(file, 'w+') as f :
                 enrichment = self.enrichment_score[gene_set]
                 for x in enrichment:
                     gene_id = x[0]
